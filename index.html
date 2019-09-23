@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="MyPromise.js"></script>
+
+    <script>
+        console.log('a');
+        var myPromise = new MyPromise((resolve, reject) => {
+            resolve(100);
+        }).then(res => {
+            console.log('success', res);
+            return new MyPromise((resolve1, reject1) => {
+                reject1('111111');
+            })
+        }, rej => {
+            console.log('fail', rej);
+        }).then()
+        .then(res => {
+            console.log(res, 'success2');
+        }, rej => {
+            console.log(rej, 'fail2');
+        })
+
+        console.log('b');
+
+
+    </script>
+</body>
+</html>
